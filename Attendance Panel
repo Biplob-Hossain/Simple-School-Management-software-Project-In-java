@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Attendance {
+    private ArrayList<String> attendanceList = new ArrayList<>();
+    private StudentManagementSystem studentSystem;
+
+    public Attendance(StudentManagementSystem studentSystem) { this.studentSystem = studentSystem; }
+
+    public void markAttendance() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Student ID: ");
+        String id = sc.nextLine();
+        if (studentSystem.searchStudentById(id) != null) {
+            System.out.print("Status (Present/Absent): ");
+            attendanceList.add("ID: " + id + " - " + sc.nextLine());
+        } else System.out.println("Student not found.");
+    }
+
+    public void viewAttendance() { for (String r : attendanceList) System.out.println(r); }
+}
