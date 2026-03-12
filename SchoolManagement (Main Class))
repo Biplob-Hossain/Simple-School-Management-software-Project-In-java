@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class SchoolManagement {
+    public static void main(String[] args) {
+        StudentManagementSystem sms = new StudentManagementSystem();
+        Attendance att = new Attendance(sms);
+        FeePanel fee = new FeePanel(sms);
+        CourseManagement cm = new CourseManagement();
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n1. Add Student \n2. View \n3. Search \n4. Attendance \n5. Pay Fee \n6. List Courses \n7. Exit");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1: sms.addStudent(); break;
+                case 2: sms.viewAllStudents(); break;
+                case 4: att.markAttendance(); break;
+                case 5: fee.payFee(); break;
+                case 6: cm.listCourses(); break;
+                case 7: return;
+            }
+        }
+    }
+}
