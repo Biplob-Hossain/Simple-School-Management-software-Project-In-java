@@ -1,0 +1,16 @@
+import java.util.Scanner;
+public class FeePanel {
+    private StudentManagementSystem sms;
+    public FeePanel(StudentManagementSystem sms) { this.sms = sms; }
+    public void payFee() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter ID: "); String id = sc.nextLine();
+        Student s = sms.searchStudentById(id);
+        if (s != null) {
+            System.out.print("Enter Amount: "); double amt = sc.nextDouble();
+            if (amt >= s.getFee()) { s.setFeePaid(true); System.out.println("Paid!"); }
+            else System.out.println("Insufficient!");
+        }
+    }
+    public void generateReport() { for (Student s : sms.getStudents()) System.out.println(s); }
+}
