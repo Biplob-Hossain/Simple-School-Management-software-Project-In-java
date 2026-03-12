@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.time.LocalDate;
+
+public class StudentManagementSystem {
+    private ArrayList<Student> students = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+
+    public void addStudent() {
+        System.out.print("Enter ID: "); String id = scanner.nextLine();
+        System.out.print("Enter Name: "); String name = scanner.nextLine();
+        System.out.print("Father's Name: "); String fName = scanner.nextLine();
+        System.out.print("Mother's Name: "); String mName = scanner.nextLine();
+        System.out.print("Mobile: "); String mobile = scanner.nextLine();
+        System.out.print("Address: "); String addr = scanner.nextLine();
+        System.out.print("Grade: "); String grade = scanner.nextLine();
+        System.out.print("Admission Date (yyyy-mm-dd): "); LocalDate date = LocalDate.parse(scanner.nextLine());
+        System.out.print("Fee: "); double fee = scanner.nextDouble(); scanner.nextLine();
+
+        students.add(new Student(id, name, fName, mName, mobile, addr, grade, date, fee));
+        System.out.println("Student added!");
+    }
+
+    public Student searchStudentById(String id) {
+        for (Student s : students) if (s.getId().equals(id)) return s;
+        return null;
+    }
+
+    public ArrayList<Student> getStudents() { return students; }
+    public void viewAllStudents() { for (Student s : students) System.out.println(s); }
+}
